@@ -17,5 +17,7 @@ jobs:
         uses: actions/checkout@v4
       - name: "Run script"
         run: |
-          bash ./start.sh "${{ github.event.inputs.city }}" "${{ secrets.api_key }}"
-
+          echo "Pogoda dla miasta: ${{ github.event.inputs.city }}" >> $GITHUB_STEP_SUMMARY
+          echo "${{ secrets.api_key }}" >> temp_file
+          cat temp_file
+          bash ./start.sh "${{ github.event.inputs.city }}" "${{ secrets.api_key }}" >> $GITHUB_STEP_SUMMARY
