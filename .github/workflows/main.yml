@@ -2,6 +2,11 @@ name: "Pogoda"
 
 on:
   workflow_dispatch:
+    inputs:
+      city:
+        description: "Miasto"
+        required: true
+        default: "Sieradz"
 
 jobs:
   pogoda_dla_miast:
@@ -12,4 +17,5 @@ jobs:
         uses: actions/checkout@v4
       - name: "Run script"
         run: |
-          bash ./start.sh "Sieradz" "KLUCZ"
+          bash ./start.sh "${{ github.event.inputs.city }}" "${{ secrets.api_key }}"
+
