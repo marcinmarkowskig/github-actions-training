@@ -1,0 +1,15 @@
+name: "Pogoda"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  pogoda_dla_miast:
+    name: "Pogoda dla miast"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+      - name: "Run script"
+        run: |
+          bash ./start.sh "Sieradz" "KLUCZ"
